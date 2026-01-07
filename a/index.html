@@ -1,1 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Para toda la vida ❤️</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.min.css">
+
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #1a1a1a; }
+        body { font-family: 'Quicksand', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .serif { font-family: 'Playfair Display', serif; }
+
+        .snap-container {
+            height: 100vh;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            scrollbar-width: none;
+        }
+        .snap-container::-webkit-scrollbar { display: none; }
+        
+        .section {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            background: #fffafb;
+        }
+
+        #intro-screen { background: #1a1a1a; color: white; }
+        .envelope {
+            width: 240px; height: 160px; background: #fff; border-radius: 4px;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 0 30px rgba(255,255,255,0.1); cursor: pointer;
+        }
+
+        .photo-frame {
+            background: white;
+            padding: 8px 8px 25px 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        /* El secreto para que no se vea forzado: object-cover */
+        .fixed-photo {
+            width: 100%;
+            height: 140px; /* Altura fija para que todos los marcos sean iguales */
+            object-fit: cover; /* La foto se adapta sin estirarse */
+            border-radius: 2px;
+        }
+
+        video { border-radius: 12px; background: #000; width: 100%; height: 100%; object-fit: cover; }
+        
+        .pswp__button--arrow--prev, .pswp__button--arrow--next { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <div class="snap-container" id="main-container">
+        
+        <section class="section" id="intro-screen">
+            <p class="mb-10 text-gray-500 tracking-[0.3em] uppercase text-[10px]">Un mensaje te espera</p>
+            <div class="envelope" onclick="startExperience()">
+                <div class="text-rose-500 text-4xl animate-pulse">❤️</div>
+            </div>
+            <p class="mt-10 text-white/70 italic serif text-lg">Toca para abrir</p>
+        </section>
+
+        <section class="section">
+            <div class="pswp-gallery photo-frame transform -rotate-2 max-w-[85%]">
+                <a href="TU_FOTO_PORTADA.jpg" data-pswp-width="1200" data-pswp-height="1600">
+                    <img src="TU_FOTO_PORTADA.jpg" class="w-full h-auto max-h-[60vh] rounded-sm mb-2">
+                </a>
+                <p class="serif text-center text-rose-600 text-xl italic">Nuestra historia</p>
+            </div>
+            <p class="mt-8 text-gray-400 text-[10px] uppercase tracking-widest">Toca para ampliar</p>
+        </section>
+
+        <section class="section bg-rose-50">
+            <h2 class="serif text-2xl mb-6 text-rose-600">Nuestras risas</h2>
+            <div class="grid grid-cols-2 gap-3 w-full max-w-sm px-4">
+                <div class="pswp-gallery photo-frame p-1 transform -rotate-3">
+                    <a href="FOTO_1.jpg" data-pswp-width="1200" data-pswp-height="1600">
+                        <img src="FOTO_1.jpg" class="fixed-photo">
+                    </a>
+                </div>
+                <div class="pswp-gallery photo-frame p-1 transform rotate-2">
+                    <a href="FOTO_2.jpg" data-pswp-width="1200" data-pswp-height="1600">
+                        <img src="FOTO_2.jpg" class="fixed-photo">
+                    </a>
+                </div>
+                <div class="pswp-gallery photo-frame p-1 transform rotate-1">
+                    <a href="FOTO_3.jpg" data-pswp-width="1200" data-pswp-height="1600">
+                        <img src="FOTO_3.jpg" class="fixed-photo">
+                    </a>
+                </div>
+                <div class="pswp-gallery photo-frame p-1 transform -rotate-2">
+                    <a href="FOTO_4.jpg" data-pswp-width="1200" data-pswp-height="1600">
+                        <img src="FOTO_4.jpg" class="fixed-photo">
+                    </a>
+                </div>
+                <div class="pswp-gallery photo-frame p-1 transform -rotate-1">
+                    <a href="FOTO_5.jpg" data-pswp-width="1200" data-pswp-height="1600">
+                        <img src="FOTO_5.jpg" class="fixed-photo">
+                    </a>
+                </div>
+                <div class="pswp-gallery photo-frame p-1 transform rotate-3">
+                    <a href="FOTO_6_.jpg" data-pswp-width="1200" data-pswp-height="1600">
+                        <img src="FOTO_6.jpg" class="fixed-photo">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-black">
+            <div class="w-full aspect-[9/16] max-h-[80vh] overflow-hidden shadow-2xl">
+                <video id="loveVideo" controls playsinline>
+                    <source src="TU_VIDEO.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="text-center w-full px-6">
+                <h2 class="serif text-3xl md:text-5xl mb-8 leading-tight text-gray-800 italic">
+                    "Mírame y acuérdate de este momento"
+                </h2>
+                <h3 class="serif text-4xl md:text-6xl font-bold text-rose-500">
+                    toda la vida.
+                </h3>
+                <div class="mt-16 text-rose-300 animate-pulse text-2xl">❤️</div>
+            </div>
+        </section>
+    </div>
+
+    <script type="module">
+        import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe-lightbox.esm.min.js';
+        const lightboxes = document.querySelectorAll('.pswp-gallery');
+        lightboxes.forEach((el) => {
+            const lightbox = new PhotoSwipeLightbox({
+                gallery: el,
+                children: 'a',
+                pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.esm.min.js'),
+                errorMsg: 'No se pudo cargar este momento ❤️',
+                allowPanToNext: false,
+                loop: false,
+                arrowKeys: false
+            });
+            lightbox.init();
+        });
+    </script>
+
+    <script>
+        function startExperience() {
+            const music = document.getElementById('background-music');
+            music.play().catch(() => {});
+            const sections = document.querySelectorAll('.section');
+            sections[1].scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
 
